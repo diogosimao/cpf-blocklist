@@ -1,0 +1,23 @@
+frontend:
+  build: frontend/
+  command: webpack
+  volumes:
+      - "./frontend:/frontend"
+      - "./frontend/app:/app"
+      - "./frontend/assets:/assets"
+      - "./frontend/config:/config"
+      - "./frontend/dist:/dist"
+      - "./frontend/package.json:/package.json"
+      - "./frontend/webpack.config.js:/webpack.config.js"
+backend:
+    extends: 
+        file: common.yml
+        service: backend_base
+    ports:
+        - "8000:8000"
+    volumes:
+        - "./backend:/src"
+        - "./frontend/dist:/static"
+        - "./frontend:/frontend"
+    environment:
+        DJANGO_SETTINGS_MODULE: verifier.settings.dev

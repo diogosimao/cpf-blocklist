@@ -1,0 +1,4 @@
+backend_base:
+    build: .
+    environment:
+        PYTHONUNBUFFERED: 1

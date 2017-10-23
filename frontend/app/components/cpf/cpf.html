@@ -1,0 +1,96 @@
+<div ng-controller="CpfListController as ctrl" ng-init="init()">
+  <div class="col-md-4 col-md-offset-4">
+    <form ng-submit="search(numberSearch)" style="margin-top:30px;">
+     <div class="row"> 
+        <h3>Buscar CPF</h3>
+      </div>
+      <div class="row"> 
+        <div class="col-sm-6">
+          <input type="text"
+          maxlength="14" 
+          class="form-control" 
+          placeholder="Nº do CPF para buscar" 
+          ng-model="numberSearch" 
+          ng-keypress="filterInteger($event); numberSearch=applyMaskara($event, numberSearch)"
+          required title="Favor preencher o campo."
+          oninvalid="this.setCustomValidity('Favor preencher o campo.')">
+        </div>
+        <div class="col-sm-6" ng-show="showResult">
+          <label>
+            <span ng-class="{'glyphicon-lock text-danger': result.status == '1', 'glyphicon-ok text-success': result.status == '0'}" class="glyphicon"></span>
+            {{ applyMaskaraOnNumber(result.number) }} - {{ result.status == '1' ? "BLOCK" : "FREE" }}
+          </label>
+        </div>
+        <div class="col-sm-6" ng-hide="hideCpfSearchError">
+          <label>
+            <span class="text-danger">{{ resultMsg }}</span>
+         </label>
+       </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-primary" ng-click="isValidCPF(numberSearch)">Buscar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-4 col-md-offset-4">
+    <form ng-submit="blackList(number)" style="margin-top:30px;">
+      <div class="row"> 
+        <h3>{{operationLabel}} CPF</h3>
+      </div>
+      <div class="row"> 
+        <input type="hidden" ng-model="id">
+        <div class="col-sm-6">
+          <input type="text"
+          maxlength="14" 
+          class="form-control" 
+          placeholder="Nº do CPF" 
+          ng-model="number" 
+          ng-disabled="disableCpfNumberInput"
+          ng-keypress="filterInteger($event); number=applyMaskara($event, number)"
+          required title="Favor preencher o campo."
+          oninvalid="this.setCustomValidity('Favor preencher o campo.')">
+        </div>
+        <div class="col-sm-6">
+          <label>
+            <span class="text-danger" ng-hide="hideCpfError">{{ resultMsg }}</span>
+            <span class="text-success" ng-show="showSuccess">{{ resultMsg }}</span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <label>
+            <input class="checkbox checkbox-inline" 
+            type="checkbox" 
+            ng-model="status.value"> Blacklist
+          </label>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-primary" 
+          ng-click="isValidCPF(number)">{{operationLabel}}</button>
+          <button type="button" class="btn btn-secundary" 
+          ng-click="resetBlackListForm()">Limpar</button>    
+        </div>
+      </div>
+    </form>  
+  </div>
+  <div class="col-md-4 col-md-offset-4">
+    <br>
+    <div class="row"> 
+      <h3>Lista de números de CPF</h3>
+    </div>
+    <div ng-repeat="cpf in cpfs">
+      <span ng-click="updateCpf($index, cpf)">
+        <span ng-class="{'glyphicon-lock text-danger': cpf.status == '1', 'glyphicon-ok text-success': cpf.status == '0'}" class="glyphicon"></span>
+        {{ applyMaskaraOnNumber(cpf.number) }} 
+      </span>
+    </div>
+  </div>
+
+</div>

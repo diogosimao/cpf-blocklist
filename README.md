@@ -4,8 +4,8 @@ Django + Angular
 
 Requirements
 =============
-Docker CE (lastest)
-Docker-compose (latest)
+* Docker CE (lastest)
+* Docker-compose (latest)
 
 Stack
 =============
@@ -34,4 +34,4 @@ Support routes
 =============
 
 * [http://localhost:8000/status](http://localhost:8000/status)
-* [http://127.0.0.1:8000/consulta?cpf=00000000000](http://localhost:8000/consulta?cpf=00000000000)
+* [http://localhost:8000/consulta?cpf=00000000000](http://localhost:8000/consulta?cpf=00000000000)

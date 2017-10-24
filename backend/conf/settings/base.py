@@ -7,7 +7,7 @@ env = environ.Env(DEBUG=(bool, False),)
 CURRENT_ENV = 'dev' # 'dev' is the default environment
 
 # read the .env file associated with the settings that're loaded
-env.read_env('./verifier/{}.env'.format(CURRENT_ENV))
+env.read_env('./conf/{}.env'.format(CURRENT_ENV))
 
 DATABASES = {
     'default': env.db()
@@ -26,7 +26,7 @@ INSTALLED_APPS.extend([
     'drf_multiple_model',
 ])
 
-ROOT_URLCONF = 'verifier.urls'
+ROOT_URLCONF = 'conf.urls'
 
 STATIC_URL = '/static/'
 

@@ -6,7 +6,7 @@ module.exports ={
       sourceMapFilename:"bundle.js.map",
 
    },
-   //watch:true,
+   watch:true,
    module:{  
       rules:[  
          {  

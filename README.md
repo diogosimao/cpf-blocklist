@@ -4,8 +4,8 @@ Django + Angular
 
 Requirements
 =============
-Docker 1.6  
-Docker-compose 1.2
+Docker CE (lastest)
+Docker-compose (latest)
 
 Stack
 =============
@@ -28,4 +28,10 @@ Run development server
 ./bin/develop.sh
 ```
 
-App should be up on [http://localhost:8000](http://localhost:8000/), running django development server.  You're good to go!
+App should be up on [http://localhost:8000](http://localhost:8000/), running django development server.
+
+Support routes
+=============
+
+* [http://localhost:8000/status](http://localhost:8000/status)
+* [http://127.0.0.1:8000/consulta?cpf=00000000000](http://localhost:8000/consulta?cpf=00000000000)

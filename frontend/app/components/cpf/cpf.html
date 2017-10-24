@@ -12,8 +12,7 @@
           placeholder="Nº do CPF para buscar" 
           ng-model="numberSearch" 
           ng-keypress="filterInteger($event); numberSearch=applyMaskara($event, numberSearch)"
-          required title="Favor preencher o campo."
-          oninvalid="this.setCustomValidity('Favor preencher o campo.')">
+          required title="Favor preencher o campo.">
         </div>
         <div class="col-sm-6" ng-show="showResult">
           <label>
@@ -50,8 +49,7 @@
           ng-model="number" 
           ng-disabled="disableCpfNumberInput"
           ng-keypress="filterInteger($event); number=applyMaskara($event, number)"
-          required title="Favor preencher o campo."
-          oninvalid="this.setCustomValidity('Favor preencher o campo.')">
+          required title="Favor preencher o campo.">
         </div>
         <div class="col-sm-6">
           <label>

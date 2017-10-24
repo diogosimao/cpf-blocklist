@@ -44,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-WSGI_APPLICATION = 'verifier.wsgi.application'
+WSGI_APPLICATION = 'conf.wsgi.application'
 
 
 # Database

@@ -1,11 +1,11 @@
-from uptime import boottime
+from drf_multiple_model.viewsets import MultipleModelAPIViewSet
 from rest_framework import mixins, viewsets
 from rest_framework_tracking.mixins import LoggingMixin
 from rest_framework_tracking.models import APIRequestLog
-from drf_multiple_model.viewsets import MultipleModelAPIViewSet
+from uptime import boottime
 
 from applications.cpf.models import Cpf
-from applications.api.v1.serializers import CpfSerializerQuery, CpfStatusSerializer, QueryStatusSerializer
+from applications.cpf.serializers import CpfSerializerQuery, CpfStatusSerializer, QueryStatusSerializer
 from .renderer import CpfJSONRenderer, ServerStatusJSONRenderer
 
 
@@ -30,5 +30,4 @@ class StatusViewSet(MultipleModelAPIViewSet):
         (Cpf.objects.filter(status=1), CpfStatusSerializer),
         (APIRequestLog.objects.filter(requested_at__gte=boottime()), QueryStatusSerializer),
         ]
-    #serializer_class = ServerStatusSerializerQuery
     renderer_classes = [ServerStatusJSONRenderer]

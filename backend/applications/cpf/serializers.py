@@ -18,7 +18,7 @@ class CpfSerializer(ModelSerializer):
         fields = ('id', 'number', 'status')
 
 
-class CpfSerializerUpdate(ModelSerializer):
+class CpfSerializerUpdate(CpfSerializer):
 
     class Meta:
         model = Cpf
@@ -26,7 +26,7 @@ class CpfSerializerUpdate(ModelSerializer):
         read_only_fields = ('number',)
 
 
-class CpfSerializerQuery(ModelSerializer):
+class CpfSerializerQuery(CpfSerializer):
 
     class Meta:
         model = Cpf

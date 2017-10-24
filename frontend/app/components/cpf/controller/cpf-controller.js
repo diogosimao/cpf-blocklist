@@ -22,6 +22,7 @@ function CpfListController($scope, CpfService) {
     $scope.status.value = true;
     $scope.operationLabel = "Incluir";
     $scope.disableCpfNumberInput = false;
+    $scope.resetMsgs();
   }
 
   $scope.resetMsgs = function(){

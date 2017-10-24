@@ -20,4 +20,4 @@ backend:
         - "./frontend/dist:/static"
         - "./frontend:/frontend"
     environment:
-        DJANGO_SETTINGS_MODULE: verifier.settings.dev
+        DJANGO_SETTINGS_MODULE: conf.settings.dev

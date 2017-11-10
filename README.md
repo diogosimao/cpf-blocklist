@@ -25,7 +25,7 @@ Run development server
 
 ```sh
 # start django dev server & frontend builder
-./bin/develop.sh
+./bin/development.sh
 ```
 
 App should be up on [http://localhost:8000](http://localhost:8000/), running django development server.

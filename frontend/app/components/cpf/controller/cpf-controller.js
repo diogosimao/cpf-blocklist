@@ -168,12 +168,6 @@ function CpfListController($scope, CpfService) {
 
     return checker2;
   }
-
-  $scope.filterInteger = function($event){
-    if(isNaN(String.fromCharCode($event.keyCode))){
-        $event.preventDefault();
-    }
-  }
   
   $scope.maskaraFieldIteration = function(maskaraSize, onlyNumbersField){
     var fieldPosition = 0;    

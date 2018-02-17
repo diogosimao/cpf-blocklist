@@ -1,0 +1,9 @@
+<div class="col-md-4">
+  <h2>Modify</h2>
+  <h3>{{ cpf.number }}</h3>
+  <div><span>slug: </span>{{cpf.slug}}</div>
+  <div>
+    <label>Blacklist:
+      <input type="checkbox" [(ngModel)]="cpf.status">
+    </label>
+</div>

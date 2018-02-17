@@ -1,24 +1,22 @@
-Django + Angular
+CPF-Blacklist
 =====================================================
 
+Small CPF blacklist manager
 
-Requirements
-=============
-* Docker CE (lastest)
-* Docker-compose (latest)
+Docker setup requirements 
+=============================
 
-Stack
+* Docker CE (lastest) installed
+    * Installation    
+        * Docker, see [here](https://docs.docker.com/installation/)
+    
+    * Used Docker images:
+        * Python, Node
+
+Requires
 =============
-* Python 3
-* Django
-* AngularJS frontend framework
-* Bootstrap3  css framework
+* Bootstrap4
 * [Gerador-Validador-CPF](http://tiagoporto.github.io/gerador-validador-cpf/)
-
-Installation
-=============
-
-Docker dev environent requires latest docker, see https://docs.docker.com/installation/
 
 Run development server
 =============

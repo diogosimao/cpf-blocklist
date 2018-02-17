@@ -105,3 +105,6 @@ ENV/
 
 #npm
 node_modules/
+
+#dev
+frontend_old/

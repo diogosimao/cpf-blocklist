@@ -1,9 +1,16 @@
-<div class="col-md-2">
-  <h2>Add</h2>
-  <label>CPF Number:
-    <input [(ngModel)]="cpf.number" placeholder="---.---.---.--">
-  </label>
-  <label>Blacklist:
-    <input type="checkbox" [(ngModel)]="cpf.status">
-  </label>
+<h2> </h2>
+<div class="row">
+  <div class="col-md-4">
+    <form [formGroup]="cpfForm" (ngSubmit)="submitForm()" class="">
+      <fieldset class="form-group text">
+        <input formControlName="cpf" class="form-control form-control-md" type="text" placeholder="CPF" />
+      </fieldset>
+      <fieldset class="form-group checkbox">
+        <label>Blocked:
+          <input formControlName="blocked" class="form-control-inline " type="checkbox" disabled="true" />
+        </label>
+      </fieldset>
+      <button class="btn btn-lg btn-primary pull-xs-right" type="submit">Add</button>
+    </form>
+  </div>
 </div>

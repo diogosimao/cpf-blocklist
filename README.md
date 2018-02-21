@@ -1,7 +1,7 @@
-CPF-Blacklist
+CPF-Blocklist
 =====================================================
 
-Small CPF blacklist manager
+Small CPF blocklist manager
 
 Docker setup requirements 
 =============================

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cpf } from '../cpf';
+import { Cpf } from '../shared/models';
 
 @Component({
   selector: 'app-cpf-detail',

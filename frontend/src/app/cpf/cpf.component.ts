@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Cpf } from '../cpf';
-import { CpfService } from '../cpf.service';
+import { Cpf } from '../shared/models';
+import { CpfService } from '../shared/services';
 
 @Component({
   selector: 'app-cpf',
@@ -11,11 +11,11 @@ import { CpfService } from '../cpf.service';
 export class CpfComponent implements OnInit {
   cpfForm: FormGroup;
 
-  constructor(private cpfService: CpfService, private fb: FormBuilder)
+  constructor(private fb: FormBuilder, private cpfService: CpfService)
   {
     this.cpfForm = this.fb.group({
       'cpf': ['', Validators.required],
-      'blocked': [true, Validators.required]
+      'blocked': [{value: true, disabled: true}, , Validators.required]
     });
   }
 

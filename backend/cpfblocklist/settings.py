@@ -12,16 +12,34 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import dj_database_url
+import environ
 
+root = environ.Path(__file__)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
+# set default values and casting
+env = environ.Env(DEBUG=(bool, True),
+                  HIDE_DOCS=(bool, False),
+                  SECRET_KEY=(str, 'b+^a=+spknionlge_$%yf!47g&_2n&td$r$cm%szhbo3!@a!v4'),
+                  DATABASE_URL=(str, ''))
 
+env.read_env()
+
+BASE_DIR = (root - 2)()
+
+SECRET_KEY = env('SECRET_KEY')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = env('DEBUG')
+
+DATABASES = {}
+
+db_from_env = dj_database_url.config()
+DATABASES['default'] = db_from_env if db_from_env else env.db('DATABASE_URL')
+
+db_from_env = dj_database_url.config(conn_max_age=600)
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -32,6 +50,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'applications.cpf',
+
+    'rest_framework',
+    'rest_framework_tracking',
+    'drf_multiple_model',
 ]
 
 MIDDLEWARE = [
@@ -44,19 +68,25 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-WSGI_APPLICATION = 'conf.wsgi.application'
+ROOT_URLCONF = 'cpfblocklist.urls'
 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
+WSGI_APPLICATION = 'cpfblocklist.wsgi.application'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -82,10 +112,12 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Brazil/East'
 
 USE_I18N = True
 
 USE_L10N = True
 
 USE_TZ = True
+
+STATIC_URL = '/static/'

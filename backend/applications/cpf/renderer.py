@@ -20,12 +20,12 @@ class CpfJSONRenderer(JSONRenderer):
 class ServerStatusJSONRenderer(JSONRenderer):
 
     def render(self, data, accepted_media_type=None, renderer_context=None):
-        blacklist_cpf_quantity = len(data[0].get('cpf', None))
+        blocklist_cpf_quantity = len(data[0].get('cpf', None))
         system_uptime = boottime()
         system_uptime = str(datetime.now() - system_uptime)
         cpf_query_quantity_since_last_uptime = len(data[1].get('apirequestlog', None))
         data = { 'Uptime do sistema': system_uptime,
-                 'Quantidade de CPFs na blacklist': blacklist_cpf_quantity,
+                 'Quantidade de CPFs na blocklist': blocklist_cpf_quantity,
                  'Quantidade de consultas desde o ultimo restart do servidor': cpf_query_quantity_since_last_uptime
                 }
 

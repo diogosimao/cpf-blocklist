@@ -108,3 +108,7 @@ node_modules/
 
 #dev
 frontend_old/
+*_developer.sh
+
+#sqlite
+*.db

@@ -1,7 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CpfDetailComponent } from './cpf-detail.component';
+import { CpfService } from '../shared/services';
 
 describe('CpfDetailComponent', () => {
   let component: CpfDetailComponent;
@@ -9,8 +11,13 @@ describe('CpfDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
-      declarations: [ CpfDetailComponent ]
+      imports: [ FormsModule, ReactiveFormsModule, RouterTestingModule ],
+      declarations: [ CpfDetailComponent ],
+      providers: [
+        {
+          provide: CpfService
+        }
+      ]
     })
     .compileComponents();
   }));

@@ -16,20 +16,19 @@ Docker setup requirements
 Requires
 =============
 * Bootstrap4
-* [Gerador-Validador-CPF](http://tiagoporto.github.io/gerador-validador-cpf/)
 
 Run development server
 =============
 
 ```sh
-# start django dev server & frontend builder
-./bin/development.sh
+# start django dev server & angular frontend with docker
+. ./bin/start_docker.sh
 ```
 
-App should be up on [http://localhost:8000](http://localhost:8000/), running django development server.
+App should be up on [http://localhost](http://localhost/)
 
 Support routes
 =============
 
-* [http://localhost:8000/status](http://localhost:8000/status)
-* [http://localhost:8000/consulta?cpf=00000000000](http://localhost:8000/consulta?cpf=00000000000)
+* [http://localhost/status](http://localhost/status)
+* [http://localhost/consulta?cpf=00000000000](http://localhost/consulta?cpf=00000000000)

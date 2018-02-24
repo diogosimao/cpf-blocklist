@@ -3,7 +3,13 @@
   <h3>{{ cpf.number }}</h3>
   <div><span>slug: </span>{{cpf.slug}}</div>
   <div>
-    <label>Blocklist:
-      <input type="checkbox" [(ngModel)]="cpf.status">
-    </label>
+    <form [formGroup]="cpfForm">
+      <fieldset>
+        <label>Blocked:
+          <input formControlName="blocked" class="form-control-inline " type="checkbox" />
+        </label>
+      </fieldset>
+        <button class="btn btn-lg pull-xs-right btn-primary" type="button"        (click)="submitForm()">Modify status
+        </button>
+    </form>
 </div>

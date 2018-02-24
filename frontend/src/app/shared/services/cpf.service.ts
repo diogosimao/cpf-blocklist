@@ -9,6 +9,18 @@ import { Cpf } from '../models';
 @Injectable()
 export class CpfService {
 
-  constructor() { }
+  constructor( private apiService: ApiService ) { }
 
+  get(slug): Observable<Cpf> {
+      return this.apiService.get('/cpf/' + slug).map(data => data.cpf);
+  }
+
+  save(cpf): Observable<Cpf> {
+      if (cpf.slug) {
+          return this.apiService.put('/cpf/' + cpf.slug, {cpf: cpf}).map(data => data.cpf);
+      }
+      else {
+          return this.apiService.post('/cpf/', {cpf: cpf}).map(data => data.cpf);
+      }
+  }
 }

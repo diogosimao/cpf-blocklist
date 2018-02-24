@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { CpfService } from './cpf.service';
+import { ApiService } from './shared';
+import { CpfService } from './shared/services/cpf.service';
 import { CpfComponent } from './cpf/cpf.component';
 import { CpfDetailComponent } from './cpf-detail/cpf-detail.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -28,9 +30,11 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
+    ApiService,
     CpfService,
     MessageService
   ],

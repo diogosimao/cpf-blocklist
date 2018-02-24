@@ -109,6 +109,10 @@ node_modules/
 #dev
 frontend_old/
 *_developer.sh
+static/
 
 #sqlite
 *.db
+
+#migrations
+*000*

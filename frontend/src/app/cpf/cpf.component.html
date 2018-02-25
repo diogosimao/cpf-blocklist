@@ -1,0 +1,16 @@
+<h2>Add CPF to the blocklist</h2>
+<div class="row">
+  <div class="col-md-4">
+    <form [formGroup]="cpfForm" (ngSubmit)="submitForm()" class="">
+      <fieldset class="form-group text">
+        <input formControlName="number" class="form-control form-control-md" type="text" placeholder="CPF" />
+      </fieldset>
+      <fieldset class="form-group checkbox">
+        <label>Blocked:
+          <input formControlName="blocked" class="form-control-inline " type="checkbox" />
+        </label>
+      </fieldset>
+      <button class="btn btn-lg btn-primary pull-xs-right" type="submit">Add</button>
+    </form>
+  </div>
+</div>

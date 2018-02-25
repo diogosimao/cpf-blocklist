@@ -1,14 +1,18 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
 from rest_framework_tracking.mixins import LoggingMixin
 
 from applications.cpf.models import Cpf
 from applications.cpf.serializers import CpfSerializer, CpfSerializerUpdate
+from applications.cpf.renderer import CpfJSONRenderer
 
 
 class CpfViewSet(LoggingMixin,
                  viewsets.ModelViewSet):
     queryset = Cpf.objects.all()
     serializer_class = CpfSerializer
+    renderer_classes = [CpfJSONRenderer]
+    lookup_field = 'number'
     logging_methods = ['GET']
 
     def get_queryset(self):

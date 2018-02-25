@@ -1,23 +1,34 @@
+dbdata:
+  image: postgres
+  command: "true"
+db:
+  extends:
+    file: common.yml
+    service: db_base
+  volumes_from:
+    - dbdata
+backend:
+  extends:
+    file: common.yml
+    service: backend_base
+  ports:
+    - "8000:8000"
+  volumes:
+    - "./backend:/src"
+  environment:
+    DJANGO_SETTINGS_MODULE: cpfblocklist.settings
+    DATABASE_URL: ${DATABASE_URL}
+  links:
+    - db
 frontend:
   build: frontend/
-  command: webpack
   volumes:
-      - "./frontend:/frontend"
-      - "./frontend/app:/app"
-      - "./frontend/assets:/assets"
-      - "./frontend/config:/config"
-      - "./frontend/dist:/dist"
-      - "./frontend/package.json:/package.json"
-      - "./frontend/webpack.config.js:/webpack.config.js"
-backend:
-    extends: 
-        file: common.yml
-        service: backend_base
-    ports:
-        - "8000:8000"
-    volumes:
-        - "./backend:/src"
-        - "./frontend/dist:/static"
-        - "./frontend:/frontend"
-    environment:
-        DJANGO_SETTINGS_MODULE: conf.settings.dev
+    - "./frontend:/frontend"
+    - "./frontend/src:/src"
+    - "./frontend/dist:/dist"
+    - "./frontend/package.json:/package.json"
+    - "./frontend/server.js:/server.js"
+  ports:
+    - "8080:8080"
+  links:
+    - "backend"

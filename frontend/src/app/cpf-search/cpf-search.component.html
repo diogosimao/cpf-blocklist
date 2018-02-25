@@ -1,0 +1,8 @@
+<form class="form-inline" [formGroup]="cpfSearchForm" (ngSubmit)="submitForm()">
+  <fieldset>
+    <input formControlName="number" class="form-control mr-sm-2" type="text" placeholder="CPF to search">
+  </fieldset>
+  <fieldset>
+    <button class="btn btn-sm-2 pull-xs-right btn-primary" type="button" (click)="submitForm()">Search</button>
+  </fieldset>
+</form>

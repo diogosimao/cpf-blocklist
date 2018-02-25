@@ -1,0 +1,14 @@
+<div class="col-md">
+  <h2>Detail</h2>
+  <h3>{{ cpf.number }}</h3>
+  <div>
+    <form [formGroup]="cpfForm">
+      <fieldset>
+        <label>Blocked:
+          <input formControlName="blocked" class="form-control-inline " type="checkbox" />
+        </label>
+      </fieldset>
+        <button class="btn btn-lg pull-xs-right btn-primary" type="button"        (click)="submitForm()">Change status
+        </button>
+    </form>
+</div>

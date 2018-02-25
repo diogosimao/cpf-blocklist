@@ -1,10 +1,10 @@
 from django.db import models
-from applications.core.models import TimestampedModel
+from applications.core.models import DefaultBaseModel
 
 
-class Cpf(TimestampedModel):
-    number = models.CharField(max_length=11, unique=True, blank=False)
-    status = models.BooleanField(default=0)
+class Cpf(DefaultBaseModel):
+    number = models.BigIntegerField(unique=True, blank=False)
+    blocked = models.BooleanField(default=0)
 
     def __str__(self):
         return self.number

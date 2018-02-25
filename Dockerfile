@@ -1,6 +1,6 @@
-FROM python:3.5
+FROM python:3
 
-ADD requirements.txt /requirements.txt
+ADD ./backend/requirements.txt /requirements.txt
 RUN pip3 install -r requirements.txt
 RUN mkdir static
 

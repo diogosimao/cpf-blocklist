@@ -1,18 +1,12 @@
 FROM node
 
 VOLUME ["/dist"]
-VOLUME ["/app"]
+VOLUME ["/src"]
 VOLUME ["/frontend"]
 
-ADD package.json .
-ADD webpack.config.js .
+WORKDIR /frontend
 
-RUN npm install 
+EXPOSE 8080
 
-RUN npm i -g webpack
-
-RUN npm i -g eslint
-
-RUN rm /package.json
-
-CMD ["webpack"]
+ENTRYPOINT ["npm", "run"]
+CMD ["start"]

@@ -16,7 +16,6 @@ Including another URLconf
 from rest_framework import routers
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.views.generic import TemplateView
 from applications.api.v1.routes import api_router
 from applications.cpf.views import QueryViewSet, StatusViewSet
 
@@ -26,8 +25,6 @@ router.register('status', StatusViewSet, base_name='status')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
-    url(r'^$', TemplateView.as_view(template_name="app/index.html"), name='index'),
 
     # API:V1
     url(r'^api/v1/', include(api_router.urls)),

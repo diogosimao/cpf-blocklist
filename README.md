@@ -13,22 +13,62 @@ Docker setup requirements
     * Used Docker images:
         * Python, Node
 
-Requires
+Frontend requires
 =============
-* Bootstrap4
+* bootstrap4
+* font-awesome
 
-Run development server
+Run frontend development server
+===============================
+
+See `README.md` at `./frontend` 
+
+
+Backend requires
 =============
 
+* Python3
+* pipenv
+
+and see `requirements_docker.txt` and `requirements.txt`
+
+Run backend development server
+===============================
+
+Run:
+    
+    $ pipenv --three && pipenv shell
+    $ pipenv --install
+
+
+touch `.env` at `./backend/cpfblocklist/`
+
+    $ touch ./backend/cpfblocklist/.env
+    
+with proper content:
+
+```
+HIDE_DOCS=False
+DEBUG=True
+DATABASE_URL=pgsql://USER:PWD@127.0.0.1:5432/cpf-blocklist
+SECRET_KEY=<YOUR_KEY>
+```
+
+or `export` variables on terminal before running bash script.    
+
+Either run `start_docker.sh`
+    
 ```sh
-# start django dev server & angular frontend with docker
+# start django dev server and angular frontend with docker
 . ./bin/start_docker.sh
 ```
 
-App should be up on [http://localhost](http://localhost/)
+or run `. ./bin/start_local.sh`
+
+Django backend should be up on [http://localhost:8080](http://localhost:8080/)
 
 Support routes
 =============
 
-* [http://localhost/status](http://localhost/status)
-* [http://localhost/consulta?cpf=00000000000](http://localhost/consulta?cpf=00000000000)
+* [http://localhost:8000/status](http://localhost:8000/status)
+* [http://localhost:8000/consulta?cpf=00000000000](http://localhost:8000/consulta?cpf=00000000000)

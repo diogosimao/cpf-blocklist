@@ -4,10 +4,9 @@ VOLUME ["/dist"]
 VOLUME ["/src"]
 VOLUME ["/frontend"]
 
-ADD package.json .
+WORKDIR /frontend
 
-RUN npm install 
+EXPOSE 8080
 
-RUN npm run postinstall
-
-RUN npm run start
+ENTRYPOINT ["npm", "run"]
+CMD ["start"]

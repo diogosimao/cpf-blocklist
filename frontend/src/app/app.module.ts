@@ -7,24 +7,25 @@ import { AppComponent } from './app.component';
 import { ApiService } from './shared';
 import { CpfService } from './shared/services/cpf.service';
 import { CpfComponent } from './cpf/cpf.component';
-import { CpfDetailComponent } from './cpf-detail/cpf-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { CpfSearchComponent } from './cpf-search/cpf-search.component';
+import { CpfDetailComponent } from './cpf-detail/cpf-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CpfComponent,
-    CpfDetailComponent,
     MessagesComponent,
     PageNotFoundComponent,
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    CpfSearchComponent,
+    CpfDetailComponent
   ],
   imports: [
     BrowserModule,

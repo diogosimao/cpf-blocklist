@@ -1,5 +1,5 @@
 export class Cpf {
   slug: string;
-  number: number;
+  number: string;
   blocked: boolean;
 }

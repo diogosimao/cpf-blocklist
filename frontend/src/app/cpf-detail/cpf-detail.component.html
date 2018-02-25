@@ -1,7 +1,6 @@
 <div class="col-md">
-  <h2>Modify</h2>
+  <h2>Detail</h2>
   <h3>{{ cpf.number }}</h3>
-  <div><span>slug: </span>{{cpf.slug}}</div>
   <div>
     <form [formGroup]="cpfForm">
       <fieldset>
@@ -9,7 +8,7 @@
           <input formControlName="blocked" class="form-control-inline " type="checkbox" />
         </label>
       </fieldset>
-        <button class="btn btn-lg pull-xs-right btn-primary" type="button"        (click)="submitForm()">Modify status
+        <button class="btn btn-lg pull-xs-right btn-primary" type="button"        (click)="submitForm()">Change status
         </button>
     </form>
 </div>

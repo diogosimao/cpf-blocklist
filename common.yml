@@ -1,3 +1,8 @@
+db_base:
+    image: postgres
+    environment:
+        POSTGRES_USER: django
+        POSTGRES_PASSWORD: django123
 backend_base:
     build: .
     environment:

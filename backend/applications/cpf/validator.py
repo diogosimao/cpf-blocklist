@@ -23,6 +23,7 @@ def calc_checker2(cpf_with_checker1):
 
 
 def is_valid_cpf(number):
+    number = str(number)
     first_nine_digits = number[0: 9]
     checker = number[9: 11]
 

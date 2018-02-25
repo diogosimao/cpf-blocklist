@@ -1,19 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NavComponent } from './nav.component';
-import { CpfSearchComponent } from '../cpf-search/cpf-search.component';
+import { CpfSearchComponent } from './cpf-search.component';
 import { CpfService } from '../shared/services';
 
-describe('NavComponent', () => {
-  let component: NavComponent;
-  let fixture: ComponentFixture<NavComponent>;
+describe('CpfSearchComponent', () => {
+  let component: CpfSearchComponent;
+  let fixture: ComponentFixture<CpfSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, FormsModule, ReactiveFormsModule],
-      declarations: [ NavComponent, CpfSearchComponent ],
+      imports: [RouterTestingModule, ReactiveFormsModule, FormsModule],
+      declarations: [ CpfSearchComponent ],
       providers: [
         {
           provide: CpfService
@@ -24,7 +23,7 @@ describe('NavComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavComponent);
+    fixture = TestBed.createComponent(CpfSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

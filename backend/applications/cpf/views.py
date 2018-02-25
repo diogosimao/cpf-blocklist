@@ -6,7 +6,7 @@ from uptime import boottime
 
 from applications.cpf.models import Cpf
 from applications.cpf.serializers import CpfSerializerQuery, CpfStatusSerializer, QueryStatusSerializer
-from .renderer import CpfJSONRenderer, ServerStatusJSONRenderer
+from .renderer import CpfStatusJSONRenderer, ServerStatusJSONRenderer
 
 
 class QueryViewSet(LoggingMixin,
@@ -15,7 +15,7 @@ class QueryViewSet(LoggingMixin,
     logging_methods = ['GET']
     queryset = Cpf.objects.all()
     serializer_class = CpfSerializerQuery
-    renderer_classes = [CpfJSONRenderer]
+    renderer_classes = [CpfStatusJSONRenderer]
 
     def get_queryset(self):
         queryset = Cpf.objects.all()
@@ -27,7 +27,7 @@ class QueryViewSet(LoggingMixin,
 
 class StatusViewSet(MultipleModelAPIViewSet):
     queryList = [
-        (Cpf.objects.filter(status=1), CpfStatusSerializer),
+        (Cpf.objects.filter(blocked=1), CpfStatusSerializer),
         (APIRequestLog.objects.filter(requested_at__gte=boottime()), QueryStatusSerializer),
         ]
     renderer_classes = [ServerStatusJSONRenderer]

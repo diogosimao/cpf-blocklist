@@ -22,6 +22,7 @@ export class CpfDetailComponent implements OnInit {
     )
   {
     this.cpfForm = this.fb.group({
+      'slug':'',
       'number': '',
       'blocked': true,
     });
@@ -29,24 +30,21 @@ export class CpfDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.data.subscribe(
-      (data: {cpf: Cpf}) => {
-        if (data.cpf) {
-          this.cpf = data.cpf;
-          this.cpfForm.patchValue(data.cpf);
-        }
-      }
-      );
+    this.route.data.subscribe(value => this.updateCpf(value.cpf));
   }
 
   updateCpf(values: Object) {
-    (<any>Object).assign(this.cpf, values);
+    if (values)
+    {
+      (<any>Object).assign(this.cpf, values);
+      this.cpfForm.patchValue(values);
+    }
   }
 
   submitForm(){
     this.updateCpf(this.cpfForm.value);
     this.cpfService.save(this.cpf).subscribe(
-      cpf => this.router.navigateByUrl('/modify/' + cpf.slug),
+      cpf => this.router.navigateByUrl('/detail/' + cpf.number),
       err => {
         console.log(err);
       }

@@ -15,31 +15,32 @@ class CpfSerializer(ModelSerializer):
 
     class Meta:
         model = Cpf
-        fields = ('id', 'number', 'status')
+        fields = ('slug', 'number', 'blocked')
+        read_only_fields = ('slug',)
 
 
 class CpfSerializerUpdate(CpfSerializer):
 
     class Meta:
         model = Cpf
-        fields = ('id', 'number', 'status')
-        read_only_fields = ('number',)
+        fields = ('slug', 'number', 'blocked')
+        read_only_fields = ('slug', 'number',)
 
 
 class CpfSerializerQuery(CpfSerializer):
 
     class Meta:
         model = Cpf
-        fields = ('number', 'status')
-        read_only_fields = ('number', 'status')
+        fields = ('number', 'blocked')
+        read_only_fields = ('number', 'blocked')
 
 
 class CpfStatusSerializer(ModelSerializer):
 
     class Meta:
         model = Cpf
-        fields = ('status',)
-        read_only_fields = ('status',)
+        fields = ('blocked',)
+        read_only_fields = ('blocked',)
 
 
 class QueryStatusSerializer(ModelSerializer):

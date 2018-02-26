@@ -11,7 +11,7 @@ Docker setup requirements
         * Docker, see [here](https://docs.docker.com/installation/)
     
     * Used Docker images:
-        * Python, Node
+        * Python, Node, PostgreSQL
 
 Frontend requires
 =============
@@ -30,7 +30,7 @@ Backend requires
 * Python3
 * pipenv
 
-and see `requirements_docker.txt` and `requirements.txt`
+and see `requirements_docker.txt` and `backend/requirements.txt`
 
 Run backend development server
 ===============================
@@ -38,8 +38,11 @@ Run backend development server
 Run:
     
     $ pipenv --three && pipenv shell
-    $ pipenv --install
+    $ pipenv install -r requirements_docker.txt
 
+if necessary:
+
+    $ pipenv install -r backend/requirements.txt
 
 touch `.env` at `./backend/cpfblocklist/`
 

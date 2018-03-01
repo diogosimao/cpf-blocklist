@@ -3,6 +3,8 @@ CPF-Blocklist
 
 Small CPF blocklist manager
 
+[![Requirements Status](https://requires.io/github/diogosimao/cpf-blocklist/requirements.svg?branch=master)](https://requires.io/github/diogosimao/cpf-blocklist/requirements/?branch=master)
+
 Docker setup requirements 
 =============================
 
